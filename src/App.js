@@ -10,6 +10,7 @@ import Header from "./components/Header/Header";
 function App() {
     const [movieList, setMovieList] = useState([]);
     const [featuredData, setFeaturedData] = useState(null);
+    const [blackHeader, setBlackHeader] = useState(false);
 
     useEffect(() => {
         const loadAll = async () => {
@@ -29,9 +30,24 @@ function App() {
         loadAll();
     }, []);
 
+    useEffect(() => {
+        const scrollListener = () => {
+            if (window.pageYOffset > 30) {
+                setBlackHeader(true);
+            } else {
+                setBlackHeader(false);
+            }
+        }
+
+        window.addEventListener('scroll', scrollListener);
+        return () => {
+            window.removeEventListener('scroll', scrollListener);
+        }
+    }, []);
+
     return (
         <div className="page">
-            <Header/>
+            <Header black={blackHeader}/>
 
             {featuredData &&
             <FeaturedMovie item={featuredData}/>
@@ -42,6 +58,12 @@ function App() {
                     <MovieRow key={key} title={item.title} items={item.items}/>
                 ))}
             </section>
+
+            <footer>
+                Feito com <span role="img" aria-label="coração">&#9829;</span> por Filipe Firmino Lemos<br/>
+                Direitos de imagem para Netflix<br/>
+                Dados coletados do site <a href="https://www.themoviedb.org/">themoviedb.org</a><br/>
+            </footer>
         </div>
     );
 }
