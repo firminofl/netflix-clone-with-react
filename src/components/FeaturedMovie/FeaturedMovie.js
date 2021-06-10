@@ -12,7 +12,7 @@ export default ({item}) => {
         genres.push(item.genres[index].name)
     }
 
-    item.overview.length > 320 ? overview = item.overview.slice(0, 319) + '...' : overview = item.overview;
+    item.overview.length > 320 ? overview = item.overview.substring(0, 319) + '...' : overview = item.overview;
 
     return (
         <section className="featured" style={{

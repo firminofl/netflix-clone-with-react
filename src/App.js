@@ -64,6 +64,13 @@ function App() {
                 Direitos de imagem para Netflix<br/>
                 Dados coletados do site <a href="https://www.themoviedb.org/">themoviedb.org</a><br/>
             </footer>
+
+            {movieList.length <= 0 &&
+                <div className="loading">
+                    <img src="https://4.bp.blogspot.com/-S2Jkpc2e_F0/UmFp_nujwbI/AAAAAAAAB20/wUhYlN-Mrgo/s1600/loading.gif"
+                         alt="Carregando"/>
+                </div>
+            }
         </div>
     );
 }

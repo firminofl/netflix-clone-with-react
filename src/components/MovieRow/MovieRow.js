@@ -5,7 +5,7 @@ import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default ({title, items}) => {
-    const [scrollX, setScrollX] = useState(-400);
+    const [scrollX, setScrollX] = useState(0);
 
     const handleLeftArrow = () => {
         let x = scrollX + Math.round(window.innerWidth / 2);
@@ -19,7 +19,6 @@ export default ({title, items}) => {
         let x = scrollX + Math.round(window.innerWidth / 2);
         let listWidth = items.results.length * 150;
 
-        console.log((window.innerWidth - listWidth));
         if ((window.innerWidth - listWidth) < x){
             x = (window.innerWidth - listWidth) - 60;
         }
